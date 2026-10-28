@@ -1,8 +1,13 @@
 class Solution:
     def hasDuplicate(self, nums: List[int]) -> bool:
-        # for i in range(len(nums)-1):
-        #     for j in range(len(nums)):
-        #         if (nums[i]==nums[j] and i!=j):
-        #             return True
+        # if len(set(nums)) < len(nums):
+        #     return True
         # return False
-        return len(set(nums)) < len(nums)
+
+        # Using HashMap
+        seen = {}
+        for n in nums:
+            if n in seen and seen[n] >= 1:
+                return True
+            seen[n] = seen.get(n,0) + 1
+        return False
