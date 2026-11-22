@@ -1,8 +1,12 @@
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
-        m = {} # dictionary to store the key:value pair of number:index(1 -indexed)
-        for i,x in enumerate(numbers):
-            y = target - x
-            if y in m:
-                return [m[y],i+1]
-            m[x] = i+1
+        l, r = 0, len(numbers)-1
+        res = 0
+        while l < r:
+            res = numbers[l] + numbers[r]
+            if res == target:
+                return[l+1, r+1]
+            elif res < target:
+                l += 1
+            else:
+                r -= 1
